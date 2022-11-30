@@ -1,13 +1,13 @@
-# Solidity TS Hardhat project template
+Контракт Airdrop (Merkle proof)
+Написать контракт, в котором пользователи могут собирать ERC20 токены при помощи Merkle proof.
+У Админа контракта должна быть возможность засетить Merkle root, адрес ERC20 токена и количество выдаваемых токенов.
+После того, как Merkle root засечен, пользователи могут собирать токены, предоставляя Merkle root.
 
-This is sceleton for using in production, including development, audit and testing of contracts on Solidity with Hardhat, Ethers and TypeScript.
+Важно, что один пользователь может собрать токены только один раз.
 
-Note 1. This project template is ready for use, only README.md files are not ready, they are in the process. In the future, this template can be improved and supplemented.
+Для реализации использовать базовый
 
-Note 2. In GitHub it can be reused by clicking the "Use this template" button at the top of the page.
+-   Hardhat репозиторий,
+-   MerkleProof библиотеку от OpenZeppelin,
 
-The MIT license is used, if otherwise, replace the `LICENSE` file and the "license" field in the `package.json` file according to your needs.
-
-The project name, description and author can be set in the `package.json` file.
-
-Note 3. There are a lot of comments in the files `.env.example` and `hardhat.config.ts`.
+написать тесты на JS демонстрирующие работу контракта, любой JS плагин для работы с Merkle tree (пример, merkletreejs).
