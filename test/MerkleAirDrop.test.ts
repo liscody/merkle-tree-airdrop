@@ -69,23 +69,23 @@ describe("MerkleAirDrop", function () {
     describe("Testing claim function", function () {
         it("Should reverted with custom error 'AlreadyClaimed'", async () => {
             await merkleAirDrop.connect(claimer).claim(hexProof);
-            await expect (merkleAirDrop.connect(claimer).claim(hexProof)).to.be.revertedWithCustomError(
+            await expect(merkleAirDrop.connect(claimer).claim(hexProof)).to.be.revertedWithCustomError(
                 merkleAirDrop,
                 "AlreadyClaimed"
             );
         });
-        
+
         it("Should reverted with custom error 'NotInMerkle'", async () => {
-            await expect (merkleAirDrop.connect(owner).claim(hexProof)).to.be.revertedWithCustomError(
+            await expect(merkleAirDrop.connect(owner).claim(hexProof)).to.be.revertedWithCustomError(
                 merkleAirDrop,
                 "NotInMerkle"
             );
-        }); 
-        
+        });
+
         it("Should change balance after claim", async () => {
-            await (merkleAirDrop.connect(claimer).claim(hexProof));
+            await merkleAirDrop.connect(claimer).claim(hexProof);
             let balance = await myErc20.balanceOf(claimer.address);
-                expect(balance).to.be.equal(1000000);
+            expect(balance).to.be.equal(1000000);
         });
     });
 
@@ -93,14 +93,14 @@ describe("MerkleAirDrop", function () {
         it("Should change a root", async () => {
             let newRoot = root;
             await merkleAirDrop.connect(owner).setRoot(newRoot);
-            expect (root).to.be.equal(newRoot)
+            expect(root).to.be.equal(newRoot);
         });
     });
     describe("Testing setAmount function", function () {
         it("Should change a amount", async () => {
             let newAmount = 5000000;
             await merkleAirDrop.connect(owner).setAmount(newAmount);
-            expect (newAmount).to.be.equal(5000000)
+            expect(newAmount).to.be.equal(5000000);
         });
     });
 });
